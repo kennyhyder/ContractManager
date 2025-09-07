@@ -1,0 +1,109 @@
+{
+  "common": {
+    "internalServerError": "An internal server error occurred. Please try again later.",
+    "notFound": "The requested resource was not found.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "forbidden": "Access to this resource is forbidden.",
+    "badRequest": "Invalid request. Please check your input.",
+    "validationError": "Validation failed. Please check your input.",
+    "rateLimitExceeded": "Too many requests. Please try again later."
+  },
+  "auth": {
+    "invalidCredentials": "Invalid email or password.",
+    "accountDisabled": "Your account has been disabled. Please contact support.",
+    "emailNotVerified": "Please verify your email address before logging in.",
+    "tokenExpired": "Your session has expired. Please log in again.",
+    "invalidToken": "Invalid or expired token.",
+    "passwordResetRequired": "Password reset is required for your account.",
+    "twoFactorRequired": "Two-factor authentication code is required.",
+    "invalidTwoFactorCode": "Invalid two-factor authentication code.",
+    "emailAlreadyExists": "An account with this email already exists.",
+    "weakPassword": "Password is too weak. Please use a stronger password.",
+    "passwordMismatch": "Passwords do not match.",
+    "oldPasswordIncorrect": "Current password is incorrect."
+  },
+  "contract": {
+    "notFound": "Contract not found.",
+    "accessDenied": "You do not have access to this contract.",
+    "invalidStatus": "Invalid contract status.",
+    "cannotDelete": "Cannot delete contract in current status.",
+    "cannotEdit": "Cannot edit contract in current status.",
+    "versionConflict": "Contract has been modified by another user. Please refresh and try again.",
+    "templateNotFound": "Contract template not found.",
+    "invalidSignature": "Invalid contract signature.",
+    "signatureRequired": "All required signatures must be completed.",
+    "approvalRequired": "Contract requires approval before this action.",
+    "expiredContract": "This contract has expired.",
+    "invalidDateRange": "Invalid date range for contract."
+  },
+  "user": {
+    "notFound": "User not found.",
+    "cannotDeleteSelf": "You cannot delete your own account.",
+    "cannotDisableSelf": "You cannot disable your own account.",
+    "insufficientPermissions": "Insufficient permissions for this operation.",
+    "invalidRole": "Invalid user role specified.",
+    "profileUpdateFailed": "Failed to update user profile.",
+    "avatarUploadFailed": "Failed to upload avatar image."
+  },
+  "file": {
+    "uploadFailed": "File upload failed.",
+    "notFound": "File not found.",
+    "invalidType": "Invalid file type. Only {{allowedTypes}} are allowed.",
+    "tooLarge": "File size exceeds maximum limit of {{maxSize}}.",
+    "virusScanFailed": "File failed virus scan.",
+    "processingFailed": "File processing failed.",
+    "downloadFailed": "File download failed."
+  },
+  "validation": {
+    "required": "{{field}} is required.",
+    "invalid": "{{field}} is invalid.",
+    "tooShort": "{{field}} must be at least {{min}} characters long.",
+    "tooLong": "{{field}} must not exceed {{max}} characters.",
+    "invalidEmail": "Please provide a valid email address.",
+    "invalidUrl": "Please provide a valid URL.",
+    "invalidDate": "Please provide a valid date.",
+    "pastDate": "Date must not be in the past.",
+    "futureDate": "Date must not be in the future.",
+    "invalidNumber": "Please provide a valid number.",
+    "outOfRange": "Value must be between {{min}} and {{max}}."
+  },
+  "api": {
+    "methodNotAllowed": "HTTP method not allowed for this endpoint.",
+    "endpointNotFound": "API endpoint not found.",
+    "invalidContentType": "Invalid content type. Expected {{expected}}.",
+    "payloadTooLarge": "Request payload too large.",
+    "invalidApiKey": "Invalid API key.",
+    "apiKeyExpired": "API key has expired.",
+    "quotaExceeded": "API quota exceeded. Please upgrade your plan."
+  },
+  "database": {
+    "connectionFailed": "Database connection failed.",
+    "queryFailed": "Database query failed.",
+    "transactionFailed": "Database transaction failed.",
+    "uniqueConstraintViolation": "A record with this {{field}} already exists.",
+    "foreignKeyConstraintViolation": "Cannot perform this operation due to related records.",
+    "deadlockDetected": "Database deadlock detected. Please try again."
+  },
+  "email": {
+    "sendFailed": "Failed to send email. Please try again.",
+    "templateNotFound": "Email template not found.",
+    "invalidRecipient": "Invalid email recipient.",
+    "quotaExceeded": "Email sending quota exceeded.",
+    "attachmentFailed": "Failed to attach file to email."
+  },
+  "payment": {
+    "failed": "Payment processing failed.",
+    "invalidCard": "Invalid credit card information.",
+    "insufficientFunds": "Insufficient funds.",
+    "cardDeclined": "Card was declined.",
+    "subscriptionNotFound": "Subscription not found.",
+    "cancelFailed": "Failed to cancel subscription."
+  },
+  "integration": {
+    "connectionFailed": "Failed to connect to {{service}}.",
+    "authenticationFailed": "Authentication with {{service}} failed.",
+    "syncFailed": "Failed to sync data with {{service}}.",
+    "webhookFailed": "Webhook processing failed.",
+    "apiError": "{{service}} API returned an error: {{error}}"
+  }
+}

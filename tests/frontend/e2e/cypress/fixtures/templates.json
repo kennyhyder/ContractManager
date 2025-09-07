@@ -1,0 +1,68 @@
+{
+  "templates": [
+    {
+      "_id": "607f1f77bcf86cd799439001",
+      "name": "Standard Service Agreement",
+      "description": "Basic service agreement template for general use",
+      "category": "service",
+      "content": "This Service Agreement is entered into...",
+      "variables": [
+        {
+          "name": "clientName",
+          "label": "Client Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "serviceDescription",
+          "label": "Service Description",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "fee",
+          "label": "Service Fee",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "isPublic": true,
+      "usageCount": 156,
+      "rating": 4.5,
+      "createdBy": "507f1f77bcf86cd799439099",
+      "createdAt": "2023-06-01T00:00:00.000Z"
+    },
+    {
+      "_id": "607f1f77bcf86cd799439002",
+      "name": "Non-Disclosure Agreement",
+      "description": "Standard mutual NDA template",
+      "category": "legal",
+      "content": "This Non-Disclosure Agreement is made between...",
+      "variables": [
+        {
+          "name": "partyOne",
+          "label": "First Party Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "partyTwo",
+          "label": "Second Party Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "effectiveDate",
+          "label": "Effective Date",
+          "type": "date",
+          "required": true
+        }
+      ],
+      "isPublic": true,
+      "usageCount": 234,
+      "rating": 4.8,
+      "createdBy": "507f1f77bcf86cd799439099",
+      "createdAt": "2023-05-15T00:00:00.000Z"
+    }
+  ]
+}

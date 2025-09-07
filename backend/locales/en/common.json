@@ -1,0 +1,170 @@
+{
+  "app": {
+    "name": "Contract Management System",
+    "tagline": "Streamline your contract lifecycle",
+    "copyright": "© 2024 Contract Management Inc. All rights reserved."
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "contracts": "Contracts",
+    "templates": "Templates",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Remember Me",
+    "loginButton": "Sign In",
+    "registerButton": "Create Account",
+    "or": "OR",
+    "loginWith": "Login with {{provider}}",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "backToLogin": "Back to Login"
+  },
+  "contracts": {
+    "title": "Contracts",
+    "new": "New Contract",
+    "edit": "Edit Contract",
+    "delete": "Delete Contract",
+    "view": "View Contract",
+    "list": "Contract List",
+    "search": "Search contracts...",
+    "filter": "Filter",
+    "sort": "Sort",
+    "status": {
+      "all": "All",
+      "draft": "Draft",
+      "pending": "Pending",
+      "active": "Active",
+      "signed": "Signed",
+      "expired": "Expired",
+      "terminated": "Terminated",
+      "archived": "Archived"
+    },
+    "fields": {
+      "title": "Title",
+      "description": "Description",
+      "template": "Template",
+      "owner": "Owner",
+      "collaborators": "Collaborators",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "value": "Contract Value",
+      "currency": "Currency",
+      "tags": "Tags",
+      "attachments": "Attachments"
+    },
+    "actions": {
+      "save": "Save",
+      "saveDraft": "Save as Draft",
+      "submit": "Submit for Approval",
+      "approve": "Approve",
+      "reject": "Reject",
+      "sign": "Sign",
+      "export": "Export",
+      "share": "Share",
+      "duplicate": "Duplicate",
+      "archive": "Archive"
+    }
+  },
+  "templates": {
+    "title": "Templates",
+    "new": "New Template",
+    "edit": "Edit Template",
+    "categories": {
+      "all": "All Categories",
+      "legal": "Legal",
+      "sales": "Sales",
+      "hr": "Human Resources",
+      "business": "Business",
+      "real-estate": "Real Estate",
+      "technology": "Technology",
+      "finance": "Finance",
+      "healthcare": "Healthcare",
+      "custom": "Custom"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAsRead": "Mark as read",
+    "markAllAsRead": "Mark all as read",
+    "noNotifications": "No new notifications",
+    "types": {
+      "contract_created": "New contract created",
+      "contract_updated": "Contract updated",
+      "contract_signed": "Contract signed",
+      "contract_expiring": "Contract expiring soon",
+      "comment_added": "New comment",
+      "mention": "You were mentioned",
+      "approval_required": "Approval required",
+      "approval_received": "Approval received"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "import": "Import",
+    "download": "Download",
+    "upload": "Upload",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish"
+  },
+  "errors": {
+    "general": "An error occurred. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "notFound": "The requested resource was not found.",
+    "validation": "Please check your input and try again.",
+    "serverError": "Server error. Please try again later."
+  },
+  "success": {
+    "saved": "Successfully saved",
+    "created": "Successfully created",
+    "updated": "Successfully updated",
+    "deleted": "Successfully deleted",
+    "sent": "Successfully sent",
+    "uploaded": "Successfully uploaded"
+  },
+  "time": {
+    "just_now": "Just now",
+    "minutes_ago": "{{count}} minute ago",
+    "minutes_ago_plural": "{{count}} minutes ago",
+    "hours_ago": "{{count}} hour ago",
+    "hours_ago_plural": "{{count}} hours ago",
+    "days_ago": "{{count}} day ago",
+    "days_ago_plural": "{{count}} days ago",
+    "weeks_ago": "{{count}} week ago", 
+    "weeks_ago_plural": "{{count}} weeks ago",
+    "months_ago": "{{count}} month ago",
+    "months_ago_plural": "{{count}} months ago"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "video": true,
+  "videoCompression": 32,
+  "videosFolder": "cypress/videos",
+  "screenshotsFolder": "cypress/screenshots",
+  "fixturesFolder": "cypress/fixtures",
+  "integrationFolder": "cypress/integration",
+  "pluginsFile": "cypress/plugins/index.js",
+  "supportFile": "cypress/support/index.js",
+  "testFiles": "**/*.spec.js",
+  "defaultCommandTimeout": 10000,
+  "requestTimeout": 10000,
+  "responseTimeout": 10000,
+  "pageLoadTimeout": 30000,
+  "execTimeout": 60000,
+  "taskTimeout": 60000,
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
+  "env": {
+    "apiUrl": "http://localhost:5000/api",
+    "coverage": false,
+    "codeCoverage": {
+      "url": "http://localhost:5000/__coverage__"
+    }
+  },
+  "experimentalStudio": true,
+  "experimentalSessionAndOrigin": true,
+  "chromeWebSecurity": false,
+  "modifyObstructiveCode": false,
+  "watchForFileChanges": true,
+  "numTestsKeptInMemory": 50,
+  "projectId": "contract-management-e2e",
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "cypress/reporter-config.json"
+  },
+  "nodeVersion": "system",
+  "includeShadowDom": false,
+  "blockHosts": [
+    "*.google-analytics.com",
+    "*.segment.io",
+    "*.fullstory.com",
+    "*.hotjar.com"
+  ]
+}

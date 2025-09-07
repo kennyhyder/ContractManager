@@ -1,0 +1,109 @@
+{
+  "common": {
+    "internalServerError": "Ocurrió un error interno del servidor. Por favor, inténtalo más tarde.",
+    "notFound": "El recurso solicitado no fue encontrado.",
+    "unauthorized": "No estás autorizado para realizar esta acción.",
+    "forbidden": "El acceso a este recurso está prohibido.",
+    "badRequest": "Solicitud inválida. Por favor, verifica tu entrada.",
+    "validationError": "La validación falló. Por favor, verifica tu entrada.",
+    "rateLimitExceeded": "Demasiadas solicitudes. Por favor, inténtalo más tarde."
+  },
+  "auth": {
+    "invalidCredentials": "Correo electrónico o contraseña inválidos.",
+    "accountDisabled": "Tu cuenta ha sido deshabilitada. Por favor, contacta a soporte.",
+    "emailNotVerified": "Por favor, verifica tu dirección de correo electrónico antes de iniciar sesión.",
+    "tokenExpired": "Tu sesión ha expirado. Por favor, inicia sesión nuevamente.",
+    "invalidToken": "Token inválido o expirado.",
+    "passwordResetRequired": "Se requiere restablecer la contraseña para tu cuenta.",
+    "twoFactorRequired": "Se requiere código de autenticación de dos factores.",
+    "invalidTwoFactorCode": "Código de autenticación de dos factores inválido.",
+    "emailAlreadyExists": "Ya existe una cuenta con este correo electrónico.",
+    "weakPassword": "La contraseña es demasiado débil. Por favor, usa una contraseña más fuerte.",
+    "passwordMismatch": "Las contraseñas no coinciden.",
+    "oldPasswordIncorrect": "La contraseña actual es incorrecta."
+  },
+  "contract": {
+    "notFound": "Contrato no encontrado.",
+    "accessDenied": "No tienes acceso a este contrato.",
+    "invalidStatus": "Estado de contrato inválido.",
+    "cannotDelete": "No se puede eliminar el contrato en el estado actual.",
+    "cannotEdit": "No se puede editar el contrato en el estado actual.",
+    "versionConflict": "El contrato ha sido modificado por otro usuario. Por favor, actualiza y vuelve a intentarlo.",
+    "templateNotFound": "Plantilla de contrato no encontrada.",
+    "invalidSignature": "Firma de contrato inválida.",
+    "signatureRequired": "Se deben completar todas las firmas requeridas.",
+    "approvalRequired": "El contrato requiere aprobación antes de esta acción.",
+    "expiredContract": "Este contrato ha expirado.",
+    "invalidDateRange": "Rango de fechas inválido para el contrato."
+  },
+  "user": {
+    "notFound": "Usuario no encontrado.",
+    "cannotDeleteSelf": "No puedes eliminar tu propia cuenta.",
+    "cannotDisableSelf": "No puedes deshabilitar tu propia cuenta.",
+    "insufficientPermissions": "Permisos insuficientes para esta operación.",
+    "invalidRole": "Rol de usuario inválido especificado.",
+    "profileUpdateFailed": "Error al actualizar el perfil del usuario.",
+    "avatarUploadFailed": "Error al subir la imagen del avatar."
+  },
+  "file": {
+    "uploadFailed": "La carga del archivo falló.",
+    "notFound": "Archivo no encontrado.",
+    "invalidType": "Tipo de archivo inválido. Solo se permiten {{allowedTypes}}.",
+    "tooLarge": "El tamaño del archivo excede el límite máximo de {{maxSize}}.",
+    "virusScanFailed": "El archivo falló el escaneo de virus.",
+    "processingFailed": "El procesamiento del archivo falló.",
+    "downloadFailed": "La descarga del archivo falló."
+  },
+  "validation": {
+    "required": "{{field}} es requerido.",
+    "invalid": "{{field}} es inválido.",
+    "tooShort": "{{field}} debe tener al menos {{min}} caracteres.",
+    "tooLong": "{{field}} no debe exceder {{max}} caracteres.",
+    "invalidEmail": "Por favor, proporciona una dirección de correo electrónico válida.",
+    "invalidUrl": "Por favor, proporciona una URL válida.",
+    "invalidDate": "Por favor, proporciona una fecha válida.",
+    "pastDate": "La fecha no debe estar en el pasado.",
+    "futureDate": "La fecha no debe estar en el futuro.",
+    "invalidNumber": "Por favor, proporciona un número válido.",
+    "outOfRange": "El valor debe estar entre {{min}} y {{max}}."
+  },
+  "api": {
+    "methodNotAllowed": "Método HTTP no permitido para este endpoint.",
+    "endpointNotFound": "Endpoint de API no encontrado.",
+    "invalidContentType": "Tipo de contenido inválido. Se esperaba {{expected}}.",
+    "payloadTooLarge": "Carga de solicitud demasiado grande.",
+    "invalidApiKey": "Clave de API inválida.",
+    "apiKeyExpired": "La clave de API ha expirado.",
+    "quotaExceeded": "Cuota de API excedida. Por favor, actualiza tu plan."
+  },
+  "database": {
+    "connectionFailed": "La conexión a la base de datos falló.",
+    "queryFailed": "La consulta a la base de datos falló.",
+    "transactionFailed": "La transacción de la base de datos falló.",
+    "uniqueConstraintViolation": "Ya existe un registro con este {{field}}.",
+    "foreignKeyConstraintViolation": "No se puede realizar esta operación debido a registros relacionados.",
+    "deadlockDetected": "Interbloqueo de base de datos detectado. Por favor, inténtalo de nuevo."
+  },
+  "email": {
+    "sendFailed": "Error al enviar el correo electrónico. Por favor, inténtalo de nuevo.",
+    "templateNotFound": "Plantilla de correo electrónico no encontrada.",
+    "invalidRecipient": "Destinatario de correo electrónico inválido.",
+    "quotaExceeded": "Cuota de envío de correos excedida.",
+    "attachmentFailed": "Error al adjuntar archivo al correo electrónico."
+  },
+  "payment": {
+    "failed": "El procesamiento del pago falló.",
+    "invalidCard": "Información de tarjeta de crédito inválida.",
+    "insufficientFunds": "Fondos insuficientes.",
+    "cardDeclined": "La tarjeta fue rechazada.",
+    "subscriptionNotFound": "Suscripción no encontrada.",
+    "cancelFailed": "Error al cancelar la suscripción."
+  },
+  "integration": {
+    "connectionFailed": "Error al conectar con {{service}}.",
+    "authenticationFailed": "La autenticación con {{service}} falló.",
+    "syncFailed": "Error al sincronizar datos con {{service}}.",
+    "webhookFailed": "El procesamiento del webhook falló.",
+    "apiError": "La API de {{service}} devolvió un error: {{error}}"
+  }
+}

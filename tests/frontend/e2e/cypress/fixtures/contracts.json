@@ -1,0 +1,42 @@
+{
+  "contracts": [
+    {
+      "_id": "507f1f77bcf86cd799439011",
+      "contractNumber": "CNT-2024-000001",
+      "title": "Service Agreement - Acme Corp",
+      "clientName": "Acme Corporation",
+      "clientEmail": "contracts@acme.com",
+      "value": 50000,
+      "status": "active",
+      "startDate": "2024-01-01T00:00:00.000Z",
+      "endDate": "2024-12-31T23:59:59.999Z",
+      "createdBy": "507f1f77bcf86cd799439011",
+      "tags": ["service", "annual", "priority"],
+      "version": 1,
+      "createdAt": "2024-01-01T10:00:00.000Z",
+      "updatedAt": "2024-01-15T14:30:00.000Z"
+    },
+    {
+      "_id": "507f1f77bcf86cd799439012",
+      "contractNumber": "CNT-2024-000002",
+      "title": "NDA - Beta Technologies",
+      "clientName": "Beta Technologies Inc.",
+      "clientEmail": "legal@betatech.com",
+      "value": 0,
+      "status": "draft",
+      "startDate": "2024-02-01T00:00:00.000Z",
+      "endDate": "2025-01-31T23:59:59.999Z",
+      "createdBy": "507f1f77bcf86cd799439011",
+      "tags": ["nda", "confidential"],
+      "version": 2,
+      "createdAt": "2024-01-20T09:00:00.000Z",
+      "updatedAt": "2024-01-22T16:45:00.000Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 2,
+    "pages": 1
+  }
+}

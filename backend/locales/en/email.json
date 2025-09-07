@@ -1,0 +1,49 @@
+{
+  "subjects": {
+    "welcome": "Welcome to Contract Management System",
+    "passwordReset": "Password Reset Request",
+    "contractShared": "Contract Shared: {{title}}",
+    "contractSigned": "Contract Signed: {{title}}",
+    "contractExpiring": "Contract Expiring Soon: {{title}}",
+    "approvalRequired": "Approval Required: {{title}}",
+    "commentAdded": "New Comment on {{title}}",
+    "mentioned": "You were mentioned in {{title}}"
+  },
+  "welcome": {
+    "greeting": "Welcome {{name}}!",
+    "intro": "Thank you for joining Contract Management System. We're excited to have you on board.",
+    "gettingStarted": "Getting Started",
+    "features": {
+      "title": "Key Features:",
+      "contracts": "Create and manage contracts with ease",
+      "collaboration": "Collaborate in real-time with your team",
+      "templates": "Use pre-built templates or create your own",
+      "tracking": "Track contract status and deadlines"
+    },
+    "action": "Get Started",
+    "help": "Need help? Check out our documentation or contact support."
+  },
+  "passwordReset": {
+    "greeting": "Hi {{name}},",
+    "intro": "We received a request to reset your password. Click the button below to create a new password.",
+    "action": "Reset Password",
+    "expires": "This link will expire in {{time}}.",
+    "ignore": "If you didn't request this, you can safely ignore this email.",
+    "security": "For security reasons, this link can only be used once."
+  },
+  "contractNotification": {
+    "greeting": "Hi {{name}},",
+    "shared": "{{sharedBy}} has shared a contract with you: {{title}}",
+    "signed": "{{signedBy}} has signed the contract: {{title}}",
+    "expiring": "The contract '{{title}}' will expire in {{days}} days.",
+    "expired": "The contract '{{title}}' has expired.",
+    "action": "View Contract",
+    "deadline": "Deadline: {{date}}"
+  },
+  "footer": {
+    "company": "Contract Management System",
+    "address": "123 Business St, Suite 100, City, State 12345",
+    "unsubscribe": "Unsubscribe from these emails",
+    "preferences": "Update email preferences"
+  }
+}

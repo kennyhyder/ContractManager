@@ -1,0 +1,113 @@
+/* CSS Variables for theming and consistency */
+:root {
+  /* Brand Colors */
+  --brand-primary: #3B82F6;
+  --brand-secondary: #8B5CF6;
+  --brand-accent: #EC4899;
+  
+  /* Status Colors */
+  --status-draft: #6B7280;
+  --status-pending: #F59E0B;
+  --status-approved: #10B981;
+  --status-rejected: #EF4444;
+  --status-signed: #3B82F6;
+  --status-expired: #F97316;
+  
+  /* Chart Colors */
+  --chart-1: #3B82F6;
+  --chart-2: #10B981;
+  --chart-3: #F59E0B;
+  --chart-4: #EF4444;
+  --chart-5: #8B5CF6;
+  --chart-6: #EC4899;
+  --chart-7: #14B8A6;
+  --chart-8: #F97316;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--brand-secondary) 100%);
+  --gradient-success: linear-gradient(135deg, var(--success-color) 0%, #14B8A6 100%);
+  --gradient-danger: linear-gradient(135deg, var(--danger-color) 0%, #F97316 100%);
+  
+  /* Layout */
+  --header-height: 64px;
+  --sidebar-width: 250px;
+  --sidebar-collapsed-width: 64px;
+  
+  /* Animation */
+  --animation-duration: 0.3s;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Breakpoints */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Typography Scale */
+:root {
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+}
+
+/* Component Specific Variables */
+:root {
+  /* Header */
+  --header-bg: var(--background);
+  --header-border: var(--border-color);
+  --header-shadow: var(--shadow);
+  
+  /* Sidebar */
+  --sidebar-bg: var(--background-secondary);
+  --sidebar-border: var(--border-color);
+  --sidebar-item-hover: var(--background-tertiary);
+  --sidebar-item-active: var(--primary-light);
+  
+  /* Forms */
+  --input-height: 40px;
+  --input-height-sm: 32px;
+  --input-height-lg: 48px;
+  --input-padding-x: var(--spacing-md);
+  --input-padding-y: var(--spacing-sm);
+  
+  /* Buttons */
+  --btn-height: 40px;
+  --btn-height-sm: 32px;
+  --btn-height-lg: 48px;
+  --btn-padding-x: var(--spacing-lg);
+  --btn-padding-y: var(--spacing-sm);
+  
+  /* Cards */
+  --card-padding: var(--spacing-lg);
+  --card-shadow: var(--shadow);
+  --card-border-radius: var(--radius-md);
+  
+  /* Modals */
+  --modal-backdrop: rgba(0, 0, 0, 0.5);
+  --modal-max-width: 600px;
+  --modal-padding: var(--spacing-xl);
+  
+  /* Tables */
+  --table-border: var(--border-color);
+  --table-row-hover: var(--background-secondary);
+  --table-header-bg: var(--background-tertiary);
+}

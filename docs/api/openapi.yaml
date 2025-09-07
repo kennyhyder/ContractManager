@@ -1,0 +1,1241 @@
+openapi: 3.0.3
+info:
+  title: Contract Management System API
+  description: |
+    Complete API documentation for the Contract Management System.
+    
+    ## Authentication
+    All API requests require authentication using JWT tokens.
+    Include the token in the Authorization header:
+    ```
+    Authorization: Bearer <your-jwt-token>
+    ```
+    
+    ## Rate Limiting
+    - Anonymous requests: 20/hour
+    - Authenticated requests: 1000/hour
+    - Premium users: 5000/hour
+    
+    ## WebSocket Support
+    Real-time updates are available via WebSocket connections at:
+    - Production: wss://api.contractmanagement.com/ws
+    - Development: ws://localhost:8000/ws
+    
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: api@contractmanagement.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.contractmanagement.com/v1
+    description: Production server
+  - url: https://staging-api.contractmanagement.com/v1
+    description: Staging server
+  - url: http://localhost:8000/api/v1
+    description: Development server
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Authentication
+    description: User authentication and authorization
+  - name: Contracts
+    description: Contract management operations
+  - name: Templates
+    description: Template management
+  - name: Users
+    description: User management
+  - name: Approvals
+    description: Approval workflow
+  - name: Analytics
+    description: Analytics and reporting
+  - name: Marketplace
+    description: Template marketplace
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        role:
+          type: string
+          enum: [user, manager, admin, super_admin]
+        company:
+          type: string
+        department:
+          type: string
+        avatar:
+          type: string
+          format: uri
+        isActive:
+          type: boolean
+        twoFactorEnabled:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+          
+    Contract:
+      type: object
+      required:
+        - title
+        - type
+        - parties
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+        type:
+          type: string
+          enum: [employment, service, nda, sales, lease, other]
+        status:
+          type: string
+          enum: [draft, pending_review, approved, active, expired, terminated]
+          default: draft
+        parties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Party'
+        value:
+          type: number
+          format: double
+          minimum: 0
+        currency:
+          type: string
+          pattern: '^[A-Z]{3}$'
+          default: USD
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        content:
+          type: string
+        metadata:
+          type: object
+        tags:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        version:
+          type: integer
+          readOnly: true
+        isTemplate:
+          type: boolean
+          default: false
+        createdBy:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+          
+    Party:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          type: string
+          enum: [individual, company]
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum: [client, vendor, employee, contractor, landlord, tenant, other]
+        signatureStatus:
+          type: string
+          enum: [pending, signed, declined]
+          
+    Template:
+      type: object
+      required:
+        - name
+        - category
+        - content
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+          enum: [employment, service, nda, sales, lease, legal, other]
+        content:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateVariable'
+        isPublic:
+          type: boolean
+          default: false
+        price:
+          type: number
+          format: double
+          minimum: 0
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 5
+          readOnly: true
+        usageCount:
+          type: integer
+          readOnly: true
+        tags:
+          type: array
+          items:
+            type: string
+        createdBy:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+          
+    TemplateVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum: [text, number, date, boolean, select]
+        required:
+          type: boolean
+          default: false
+        defaultValue:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+            
+    Approval:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        contractId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, approved, rejected, cancelled]
+        level:
+          type: integer
+          minimum: 1
+        approvers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Approver'
+        comments:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+          
+    Approver:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        status:
+          type: string
+          enum: [pending, approved, rejected]
+        respondedAt:
+          type: string
+          format: date-time
+        comments:
+          type: string
+          
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        filename:
+          type: string
+        contentType:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+          format: uri
+        uploadedAt:
+          type: string
+          format: date-time
+          
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        entityType:
+          type: string
+          enum: [contract, template, user]
+        entityId:
+          type: string
+          format: uuid
+        action:
+          type: string
+        description:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        metadata:
+          type: object
+        createdAt:
+          type: string
+          format: date-time
+          
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        contractId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        content:
+          type: string
+        parentId:
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+          
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+        details:
+          type: object
+        timestamp:
+          type: string
+          format: date-time
+          
+  responses:
+    UnauthorizedError:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+            
+    ForbiddenError:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+            
+    NotFoundError:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+            
+    ValidationError:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      operationId: registerUser
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - firstName
+                - lastName
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                company:
+                  type: string
+                department:
+                  type: string
+      responses:
+        201:
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+                  refreshToken:
+                    type: string
+        400:
+          $ref: '#/components/responses/ValidationError'
+          
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login user
+      operationId: loginUser
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                twoFactorCode:
+                  type: string
+                  pattern: '^[0-9]{6}$'
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+                  refreshToken:
+                    type: string
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+          
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Logout user
+      operationId: logoutUser
+      responses:
+        200:
+          description: Logout successful
+          
+  /auth/refresh:
+    post:
+      tags:
+        - Authentication
+      summary: Refresh access token
+      operationId: refreshToken
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - refreshToken
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        200:
+          description: Token refreshed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  refreshToken:
+                    type: string
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+          
+  /auth/2fa/enable:
+    post:
+      tags:
+        - Authentication
+      summary: Enable two-factor authentication
+      operationId: enable2FA
+      responses:
+        200:
+          description: 2FA setup initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  qrCode:
+                    type: string
+                    format: base64
+                  secret:
+                    type: string
+                    
+  /contracts:
+    get:
+      tags:
+        - Contracts
+      summary: List all contracts
+      operationId: listContracts
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [draft, pending_review, approved, active, expired, terminated]
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [employment, service, nda, sales, lease, other]
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [createdAt, updatedAt, title, value, startDate, endDate]
+            default: createdAt
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+      responses:
+        200:
+          description: Contracts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contracts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Contract'
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      limit:
+                        type: integer
+                      total:
+                        type: integer
+                      pages:
+                        type: integer
+                        
+    post:
+      tags:
+        - Contracts
+      summary: Create a new contract
+      operationId: createContract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contract'
+      responses:
+        201:
+          description: Contract created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        400:
+          $ref: '#/components/responses/ValidationError'
+          
+  /contracts/{id}:
+    get:
+      tags:
+        - Contracts
+      summary: Get contract by ID
+      operationId: getContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Contract retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+          
+    put:
+      tags:
+        - Contracts
+      summary: Update contract
+      operationId: updateContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contract'
+      responses:
+        200:
+          description: Contract updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+          
+    delete:
+      tags:
+        - Contracts
+      summary: Delete contract
+      operationId: deleteContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        204:
+          description: Contract deleted successfully
+        404:
+          $ref: '#/components/responses/NotFoundError'
+          
+  /contracts/{id}/versions:
+    get:
+      tags:
+        - Contracts
+      summary: Get contract version history
+      operationId: getContractVersions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Version history retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  versions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        version:
+                          type: integer
+                        changes:
+                          type: object
+                        changedBy:
+                          type: string
+                          format: uuid
+                        changedAt:
+                          type: string
+                          format: date-time
+                          
+  /contracts/{id}/compare:
+    post:
+      tags:
+        - Contracts
+      summary: Compare two contract versions
+      operationId: compareContracts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                version1:
+                  type: integer
+                version2:
+                  type: integer
+      responses:
+        200:
+          description: Comparison result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  differences:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        field:
+                          type: string
+                        oldValue:
+                          type: string
+                        newValue:
+                          type: string
+                          
+  /contracts/{id}/comments:
+    get:
+      tags:
+        - Contracts
+      summary: Get contract comments
+      operationId: getContractComments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Comments retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+                      
+    post:
+      tags:
+        - Contracts
+      summary: Add comment to contract
+      operationId: addContractComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                parentId:
+                  type: string
+                  format: uuid
+                  nullable: true
+      responses:
+        201:
+          description: Comment added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+                
+  /contracts/{id}/approve:
+    post:
+      tags:
+        - Contracts
+        - Approvals
+      summary: Approve contract
+      operationId: approveContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comments:
+                  type: string
+      responses:
+        200:
+          description: Contract approved
+          
+  /contracts/{id}/reject:
+    post:
+      tags:
+        - Contracts
+        - Approvals
+      summary: Reject contract
+      operationId: rejectContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+      responses:
+        200:
+          description: Contract rejected
+          
+  /templates:
+    get:
+      tags:
+        - Templates
+      summary: List all templates
+      operationId: listTemplates
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+            enum: [employment, service, nda, sales, lease, legal, other]
+        - name: isPublic
+          in: query
+          schema:
+            type: boolean
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Templates retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Template'
+                      
+    post:
+      tags:
+        - Templates
+      summary: Create a new template
+      operationId: createTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Template'
+      responses:
+        201:
+          description: Template created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+                
+  /templates/{id}:
+    get:
+      tags:
+        - Templates
+      summary: Get template by ID
+      operationId: getTemplate
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Template retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+                
+  /marketplace/templates:
+    get:
+      tags:
+        - Marketplace
+      summary: Browse marketplace templates
+      operationId: browseMarketplace
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+        - name: minRating
+          in: query
+          schema:
+            type: number
+            minimum: 0
+            maximum: 5
+      responses:
+        200:
+          description: Marketplace templates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Template'
+                      
+  /marketplace/templates/{id}/purchase:
+    post:
+      tags:
+        - Marketplace
+      summary: Purchase a template
+      operationId: purchaseTemplate
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Template purchased
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  template:
+                    $ref: '#/components/schemas/Template'
+                  transactionId:
+                    type: string
+                    
+  /users/me:
+    get:
+      tags:
+        - Users
+      summary: Get current user profile
+      operationId: getCurrentUser
+      responses:
+        200:
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+                
+    put:
+      tags:
+        - Users
+      summary: Update current user profile
+      operationId: updateCurrentUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                company:
+                  type: string
+                department:
+                  type: string
+      responses:
+        200:
+          description: Profile updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+                
+  /analytics/dashboard:
+    get:
+      tags:
+        - Analytics
+      summary: Get dashboard analytics
+      operationId: getDashboardAnalytics
+      parameters:
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Analytics data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalContracts:
+                    type: integer
+                  activeContracts:
+                    type: integer
+                  totalValue:
+                    type: number
+                  contractsByStatus:
+                    type: object
+                  contractsByType:
+                    type: object
+                  recentActivity:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Activity'
+                      
+  /analytics/contracts/{id}:
+    get:
+      tags:
+        - Analytics
+      summary: Get contract analytics
+      operationId: getContractAnalytics
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Contract analytics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  views:
+                    type: integer
+                  edits:
+                    type: integer
+                  comments:
+                    type: integer
+                  approvalTime:
+                    type: number
+                    description: Average approval time in hours
+                  activity:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Activity'
+
+webhooks:
+  contractCreated:
+    post:
+      requestBody:
+        description: Contract created webhook
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event:
+                  type: string
+                  enum: [contract.created]
+                data:
+                  $ref: '#/components/schemas/Contract'
+                timestamp:
+                  type: string
+                  format: date-time
+                  
+  contractUpdated:
+    post:
+      requestBody:
+        description: Contract updated webhook
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event:
+                  type: string
+                  enum: [contract.updated]
+                data:
+                  $ref: '#/components/schemas/Contract'
+                timestamp:
+                  type: string
+                  format: date-time
+                  
+  contractApproved:
+    post:
+      requestBody:
+        description: Contract approved webhook
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event:
+                  type: string
+                  enum: [contract.approved]
+                data:
+                  $ref: '#/components/schemas/Contract'
+                timestamp:
+                  type: string
+                  format: date-time

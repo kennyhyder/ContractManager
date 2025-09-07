@@ -1,0 +1,154 @@
+{
+  "subjects": {
+    "welcome": "¡Bienvenido a {{appName}}!",
+    "emailVerification": "Verifica tu dirección de correo electrónico",
+    "passwordReset": "Restablecer tu contraseña",
+    "passwordChanged": "Tu contraseña ha sido cambiada",
+    "contractShared": "Contrato compartido contigo",
+    "approvalRequest": "Aprobación de contrato requerida",
+    "contractSigned": "Contrato firmado exitosamente",
+    "contractExpiring": "Contrato próximo a vencer",
+    "twoFactorEnabled": "Autenticación de dos factores activada",
+    "dailyDigest": "Tu resumen diario de contratos",
+    "reminderNotification": "Recordatorio: {{reminderTitle}}",
+    "backupCompleted": "Copia de seguridad completada"
+  },
+  "common": {
+    "greeting": "Hola {{name}}",
+    "bestRegards": "Saludos cordiales",
+    "teamSignature": "El equipo de {{appName}}",
+    "copyright": "© {{year}} {{appName}}. Todos los derechos reservados.",
+    "helpCenter": "Centro de ayuda",
+    "privacyPolicy": "Política de privacidad",
+    "unsubscribe": "Cancelar suscripción",
+    "viewInBrowser": "Ver en el navegador",
+    "securityTip": "Consejo de seguridad",
+    "importantNotice": "Aviso importante"
+  },
+  "buttons": {
+    "verify": "Verificar correo electrónico",
+    "resetPassword": "Restablecer contraseña",
+    "viewContract": "Ver contrato",
+    "reviewApproval": "Revisar y aprobar",
+    "signin": "Iniciar sesión",
+    "getStarted": "Comenzar",
+    "viewDashboard": "Ver panel de control",
+    "download": "Descargar",
+    "learnMore": "Aprender más"
+  },
+  "emailVerification": {
+    "title": "¡Bienvenido a {{appName}}!",
+    "body": "Gracias por registrarte en {{appName}}. Para completar tu registro, por favor verifica tu dirección de correo electrónico haciendo clic en el botón a continuación:",
+    "expiration": "Este enlace de verificación expirará en 24 horas por razones de seguridad.",
+    "ignore": "Si no creaste una cuenta con {{appName}}, puedes ignorar este correo de forma segura.",
+    "alternativeLink": "Si el botón no funciona, puedes copiar y pegar este enlace en tu navegador:"
+  },
+  "passwordReset": {
+    "title": "Solicitud de restablecimiento de contraseña",
+    "body": "Recibimos una solicitud para restablecer tu contraseña de {{appName}}. Si realizaste esta solicitud, haz clic en el botón a continuación:",
+    "expiration": "Este enlace de restablecimiento expirará en 1 hora por razones de seguridad.",
+    "ignore": "Si no solicitaste un restablecimiento de contraseña, puedes ignorar este correo. Tu contraseña permanecerá sin cambios.",
+    "securityNote": "Por razones de seguridad, este enlace solo puede usarse una vez.",
+    "neverShare": "Nunca compartas tu contraseña con nadie. {{appName}} nunca te pedirá tu contraseña por correo electrónico."
+  },
+  "contractNotifications": {
+    "shared": {
+      "title": "Contrato compartido contigo",
+      "body": "{{senderName}} ha compartido un contrato contigo en {{appName}}.",
+      "yourRole": "Tu rol",
+      "accessNote": "También puedes acceder a este contrato iniciando sesión en tu cuenta de {{appName}} y navegando a tus contratos compartidos."
+    },
+    "approval": {
+      "title": "Aprobación de contrato requerida",
+      "body": "{{requesterName}} ha solicitado tu aprobación para el siguiente contrato:",
+      "requestedBy": "Solicitado por",
+      "requestDate": "Fecha de solicitud",
+      "responseNeeded": "Respuesta necesaria antes de",
+      "notesFrom": "Notas de {{requesterName}}",
+      "reviewInstructions": "Puedes aprobar, rechazar o solicitar cambios a este contrato.",
+      "options": {
+        "approve": "Aprobar: Aceptar el contrato tal como está",
+        "requestChanges": "Solicitar cambios: Pedir modificaciones antes de aprobar",
+        "reject": "Rechazar: Declinar el contrato con razones"
+      }
+    },
+    "signed": {
+      "title": "Contrato firmado exitosamente",
+      "confirmation": "Este correo confirma que {{contractTitle}} ha sido firmado por todas las partes.",
+      "signedBy": "Firmado por",
+      "nextSteps": "Próximos pasos",
+      "downloadCopy": "Puedes descargar una copia firmada del contrato para tus registros."
+    },
+    "expiring": {
+      "title": "Contrato próximo a vencer",
+      "warningDays": "Tu contrato vencerá en {{daysRemaining}} días.",
+      "warningToday": "Tu contrato vence hoy.",
+      "autoRenewal": "Este contrato se renovará automáticamente a menos que se cancele antes de la fecha de vencimiento.",
+      "noAutoRenewal": "Este contrato no se renovará automáticamente. Si deseas extenderlo o renovarlo, por favor contacta a la otra parte o crea un nuevo contrato.",
+      "recommendedActions": "Acciones recomendadas",
+      "actions": {
+        "review": "Revisar los términos del contrato",
+        "contact": "Contactar a la otra parte si se necesita renovación",
+        "update": "Actualizar la configuración de renovación automática si es necesario",
+        "prepare": "Preparar cualquier documentación requerida para la renovación"
+      }
+    }
+  },
+  "security": {
+    "twoFactorEnabled": {
+      "title": "Autenticación de dos factores activada",
+      "success": "La autenticación de dos factores (2FA) ha sido activada exitosamente para tu cuenta de {{appName}}.",
+      "whatThisMeans": "Qué significa esto",
+      "benefits": {
+        "code": "Necesitarás ingresar un código de tu aplicación autenticadora al iniciar sesión",
+        "protection": "Tu cuenta ahora está protegida contra accesos no autorizados",
+        "backup": "Tienes códigos de respaldo para acceso de emergencia"
+      },
+      "important": "Información de seguridad importante",
+      "tips": {
+        "keepSafe": "Guarda tus códigos de respaldo en un lugar seguro",
+        "dontShare": "No compartas tu aplicación autenticadora con nadie",
+        "contact": "Contacta a soporte si pierdes acceso a tu dispositivo autenticador"
+      },
+      "notYou": "Si no activaste 2FA, por favor contacta a nuestro equipo de soporte inmediatamente."
+    }
+  },
+  "digest": {
+    "daily": {
+      "title": "Tu resumen diario de contratos",
+      "summary": "Aquí está tu resumen diario para {{date}}:",
+      "requireAction": "Contratos que requieren tu acción",
+      "expiringSoon": "Contratos próximos a vencer",
+      "recentActivity": "Actividad reciente",
+      "stats": {
+        "active": "Contratos activos",
+        "pending": "Pendientes de aprobación",
+        "expiring": "Vencen este mes"
+      },
+      "noActivity": "No hay actividad nueva desde tu último resumen.",
+      "viewAll": "Ver todos los contratos"
+    }
+  },
+  "system": {
+    "backup": {
+      "title": "Copia de seguridad del sistema completada",
+      "success": "La copia de seguridad programada para {{appName}} se ha completado exitosamente.",
+      "details": "Detalles de la copia de seguridad",
+      "stats": {
+        "backupId": "ID de copia de seguridad",
+        "startTime": "Hora de inicio",
+        "endTime": "Hora de finalización",
+        "duration": "Duración",
+        "size": "Tamaño de la copia"
+      },
+      "components": {
+        "database": "Copia de base de datos",
+        "files": "Copia de almacenamiento de archivos",
+        "config": "Copia de configuración"
+      },
+      "retention": "Esta copia de seguridad se conservará durante {{days}} días",
+      "nextBackup": "Próxima copia de seguridad programada",
+      "warnings": "Advertencias/Errores de la copia de seguridad"
+    }
+  }
+}
